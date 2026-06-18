@@ -6,15 +6,20 @@ const Keyboard = () => {
 
     const dispatch = useDispatch();
     const keybordValue = useSelector((state: RootState) => state.counter.value);
+    const status = useSelector((state: RootState) => state.counter.status);
 
     return (
         <div className="container mt-5" style={{ maxWidth: '400px' }}>
             <input
                 type="text"
                 className="form-control mb-3"
-                style={{ height: '80px', fontSize: '2rem' }}
+                style={{ 
+                    height: '80px', 
+                    fontSize: '2rem',
+                    backgroundColor: status === null ? "white" : status ? "#c3ffc3" : "#ffbfbf"
+                }}
                 readOnly
-                value={keybordValue}
+                value={"*".repeat(keybordValue.length)}
             />
 
             <div className="row g-2">

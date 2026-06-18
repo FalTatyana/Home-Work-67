@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 
 interface CounterState {
   value: string;
+  status: boolean
 }
 
 const initialState: CounterState = {
   value: "",
+  status: null as boolean | null
 };
 
 const Password = "1111";
@@ -16,6 +18,7 @@ const keybordSlice = createSlice({
   initialState,
   reducers: {
     addNum: (state, action: PayloadAction<string>) => {
+      if (state.value.length >= 4) return;
       state.value += action.payload;
     },
 
@@ -23,13 +26,17 @@ const keybordSlice = createSlice({
       state.value = state.value.slice(0, -1);
     },
     enterPassword: (state) => {
-      if (state.value.length < 4 || state.value.length > 4) {
-        toast.error("Enter 4 symbols");
+      if (state.value.length < 4) {
+        toast.info("Enter 4 symbols");
+        return;
       } else if (Password === state.value) {
-        console.log("password true");
-      } else if (Password !== state.value) {
-        console.log("password false");
+        state.status = true;
+        toast.success("Succsess Granted");
+      } else {
+        state.status = false;
+        toast.error("Success Denied");
       }
+      state.value = "";
     },
   },
 });
