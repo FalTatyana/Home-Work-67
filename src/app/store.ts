@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {counterReducer} from "../pages/counterSlice.ts";
+import {counterReducer} from "../components/Keyboard/Keyboard.ts";
 
 export const store = configureStore({
   reducer: {

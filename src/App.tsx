@@ -1,10 +1,18 @@
+import { ToastContainer } from "react-toastify"
 import Header from "./components/Header/Header"
+import Keyboard from "./components/Keyboard/Keyboard"
 
 function App() {
 
   return (
     <>
-    <Header></Header>
+    <Header/>
+    <Keyboard/>
+    <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        theme="light"
+      />
     </>
   )
 }
