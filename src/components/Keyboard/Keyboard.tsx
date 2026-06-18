@@ -5,7 +5,7 @@ import { addNum, deleteNum, enterPassword } from "./Keyboard";
 const Keyboard = () => {
 
     const dispatch = useDispatch();
-    const counterValue = useSelector((state: RootState) => state.counter.value);
+    const keybordValue = useSelector((state: RootState) => state.counter.value);
 
     return (
         <div className="container mt-5" style={{ maxWidth: '400px' }}>
@@ -14,6 +14,7 @@ const Keyboard = () => {
                 className="form-control mb-3"
                 style={{ height: '80px', fontSize: '2rem' }}
                 readOnly
+                value={keybordValue}
             />
 
             <div className="row g-2">
